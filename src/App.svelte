@@ -1,24 +1,19 @@
 <script>
-	let firstName = "Masahiro";
-	let lastName = "Nagai";
-	let beltColor = "black";
-
-	$: fullName = `${firstName} ${lastName} `
-
-	const handleClick = () =>{
-		beltColor = "orange";
-	};
-
-	const handleInput = (e) =>{
-		beltColor = e.target.value
-	}
+	let people = [
+		{ name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
+		{ name: 'mario', beltColour: 'orange', age: 45, id: 2 },
+		{ name: 'luigi', beltColour: 'brown', age: 35, id: 3 },
+	]
 </script>
 
 <main>
-	<p> {fullName} - {beltColor} belt</p>
-	<input type="text" bind:value={firstName}>
-	<input type="text" bind:value={lastName}>
-	<input type="text" bind:value={beltColor}>
+	{#each people as person(person.id)}
+		<div>
+			<h4>{person.name}</h4>
+			<p>{person.age}years old, {person.beltColour} belt.</p>
+		</div>
+		{:else}<p>There are no people to show...</p>
+	{/each}
 </main>
 
 <style>
@@ -29,12 +24,6 @@
 		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
 
 	@media (min-width: 640px) {
 		main {
