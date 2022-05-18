@@ -2,12 +2,12 @@
 	import Modal from "./Modal.svelte"
 
 	
-	let num =5
+
 </script>
 
 
 <main>
-	<Modal />	
+	<Modal message="Hey, I am a prop value" isPromo={true}/>	
 </main>
 
 <style>

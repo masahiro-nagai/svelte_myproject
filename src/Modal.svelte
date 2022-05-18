@@ -1,6 +1,8 @@
 <script>
-let showModal = true
-    export let people = [
+    export let message = "default value"
+    let showModal = true
+    export let isPromo =false
+    let people = [
             { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
             { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
             { name: 'luigi', beltColour: 'brown', age: 35, id: 3 },
@@ -8,12 +10,12 @@ let showModal = true
     const handleClick = (id) =>{
 		people = people.filter((person)=> person.id != id)
 	}
-	let isPromo =true
+	
 </script>
 {#if showModal}
 <div class="backdrop" class:promo={isPromo}>
     <div class="modal">
-        <p>Sign up for offers!</p>
+        <p>{message}</p>
     </div>
 
 </div>
