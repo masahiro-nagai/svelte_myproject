@@ -1,6 +1,6 @@
 <script>
     export let message = "default value"
-    let showModal = true
+    export let showModal = false
     export let isPromo =false
     let people = [
             { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
@@ -13,7 +13,7 @@
 	
 </script>
 {#if showModal}
-<div class="backdrop" class:promo={isPromo}>
+<div class="backdrop" class:promo={isPromo} on:click>
     <div class="modal">
         <p>{message}</p>
     </div>

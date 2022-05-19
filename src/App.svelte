@@ -1,13 +1,18 @@
 <script>
 	import Modal from "./Modal.svelte"
 
-	
+	let showModal = false
+
+	const toggleModal = () =>{
+		showModal = !showModal
+	}
 
 </script>
 
 
 <main>
-	<Modal message="Hey, I am a prop value" isPromo={true}/>	
+	<button on:click={toggleModal}>Open Modal</button>
+	<Modal message="Hey, I am a prop value" {showModal} on:click/>	
 </main>
 
 <style>
