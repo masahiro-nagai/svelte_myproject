@@ -3,16 +3,43 @@
 
 	let showModal = false
 
+	let people = [
+            { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
+            { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
+            { name: 'luigi', beltColour: 'brown', age: 35, id: 3 },
+        ]
+    const handleClick = (id) =>{
+		people = people.filter((person)=> person.id != id)
+	}
+
 	const toggleModal = () =>{
 		showModal = !showModal
 	}
 
 </script>
-
+<Modal  {showModal} on:click={toggleModal}>
+	<h3>Add a New Person</h3>
+	<form>
+		<input type="text" placeholder="name">
+		<input type="text" placeholder="beltcolour">
+		<button>Add Person</button>
+	</form>
+</Modal>
 
 <main>
 	<button on:click={toggleModal}>Open Modal</button>
-	<Modal message="Hey, I am a prop value" {showModal} on:click/>	
+	{#each people as person(person.id)}
+	<div>
+		<h4>{person.name}</h4>
+		{#if person.beltColour === "black"}
+		<p><strong>Master Ninja</strong></p>
+		{/if}
+		<p>{person.age}years old, {person.beltColour} belt.</p>
+		<button on:click={()=>{handleClick(person.id)}}>DELETE</button>
+	</div>
+	{:else}<p>There are no people to show...</p>
+	{/each}
+
 </main>
 
 <style>
